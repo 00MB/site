@@ -55,3 +55,4 @@ Thumbs.db
 !.editorconfig
 !.phpcs.xml.dist
 !.env.example
+!.github

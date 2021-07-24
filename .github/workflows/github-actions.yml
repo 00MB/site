@@ -1,0 +1,18 @@
+name: GitHub Actions Demo
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12.x"
+      - run: npm i
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NOTION_KEY}}
+      - run: node script.js
