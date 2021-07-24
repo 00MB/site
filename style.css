@@ -1,0 +1,17 @@
+body {
+  margin: 0 20%;
+}
+img {
+  width: 20%;
+}
+li {
+  list-style-type: none;
+}
+ul {
+  padding: 0;
+}
+
+.a-index {
+  text-decoration: none;
+  color: #000;
+}
