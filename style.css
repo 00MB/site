@@ -1,7 +1,15 @@
 body {
   margin: 0 20%;
+  padding-bottom: 50px;
 }
-img {
+
+p {
+  color: #001111;
+  line-height: 1.5em;
+  font-size: 1.05em;
+}
+
+.me {
   width: 20%;
 }
 li {
@@ -9,6 +17,10 @@ li {
 }
 ul {
   padding: 0;
+}
+
+img {
+  max-width: 60%;
 }
 
 .a-index {
