@@ -281,5 +281,4 @@ async function updateBooks(dbid) {
 updateWriting("f9f00195-8a9a-4296-a450-77666760d624");
 //console.log("Writing complete");
 updateBooks("6c41a8e00cbe420f87c6ab588ed98933");
-console.log("Books complete");
 updateProjects("438fe6b561bc417988484bbfc5b09a7a");
