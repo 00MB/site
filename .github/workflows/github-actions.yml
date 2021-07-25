@@ -14,7 +14,6 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm i
-      - run: |
-        touch .env
-        echo NOTION_KEY =${{ secrets.NOTION_KEY }} >> .env
+      - run: touch .env
+      - run: echo NOTION_KEY =${{ secrets.NOTION_KEY }} >> .env
       - run: node script.js
