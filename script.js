@@ -3,6 +3,7 @@ const fs = require("fs");
 const dotenv = require("dotenv");
 dotenv.config();
 var beautify_html = require("js-beautify").html;
+const { makeConsoleLogger } = require("@notionhq/client/build/src/logging");
 
 const notion = new Client({
   auth: process.env.NOTION_KEY,
@@ -52,6 +53,26 @@ async function getTitle(pageid) {
     page_id: pageid,
   });
   return data.properties.Name.title[0].plain_text;
+}
+
+async function getAuthor(pageid) {
+  var data = await notion.pages.retrieve({
+    page_id: pageid,
+  });
+  console.log(data);
+  author = data.properties;
+  console.log(author);
+  return author.Author.rich_text[0].plain_text;
+}
+
+async function getVideo(pageid) {
+  var data = await notion.pages.retrieve({
+    page_id: pageid,
+  });
+  console.log(data);
+  var video = data.properties;
+  console.log(video);
+  return video.Video.url;
 }
 
 async function getPages(dbid) {
@@ -146,7 +167,7 @@ async function updateWriting(dbid) {
             <a href="books.html">Books</a>
           </li>
           <li>
-            <a href="projects">Projects</a>
+            <a href="projects.html">Projects</a>
           </li>
         </ul>
       </header>
@@ -182,4 +203,83 @@ async function updateWriting(dbid) {
   }
 }
 
+async function updateProjects(dbid) {
+  var html = `<!DOCTYPE html>
+  <html lang="en">
+    <meta charset="UTF-8" />
+    <head>
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Michael Beer</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <header>
+        <h1><a href="index.html" class="a-index">Michael Beer</a></h1>
+        <ul>
+          <li><a href="writing.html">Writing</a></li>
+          <li>
+            <a href="books.html">Books</a>
+          </li>
+          <li>
+            <a href="projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <main>
+        <h2>Projects</h2><ul>`;
+  var pages = await getPages(dbid);
+  for (page of pages) {
+    title = await getTitle(page);
+    console.log(page);
+    video = await getVideo(page);
+    console.log(video);
+    html +=
+      `<li><a target="_blank" href="` + video + `">` + title + `</a></li>`;
+  }
+  html = beautify_html(html);
+  fs.writeFile("projects.html", html, (err) => {
+    console.log(err);
+  });
+}
+
+async function updateBooks(dbid) {
+  var html = `<!DOCTYPE html>
+  <html lang="en">
+    <meta charset="UTF-8" />
+    <head>
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Michael Beer</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <header>
+        <h1><a href="index.html" class="a-index">Michael Beer</a></h1>
+        <ul>
+          <li><a href="writing.html">Writing</a></li>
+          <li>
+            <a href="books.html">Books</a>
+          </li>
+          <li>
+            <a href="projects.html">Projects</a>
+          </li>
+        </ul>
+      </header>
+      <main>
+        <h2>Favourite Books</h2><ul>`;
+  var pages = await getPages(dbid);
+  for (page of pages) {
+    title = await getTitle(page);
+    var author = await getAuthor(page);
+    html += `<li>` + title + ` - ` + author + `</li>`;
+  }
+  html = beautify_html(html);
+  fs.writeFile("books.html", html, (err) => {
+    console.log(err);
+  });
+}
+
 updateWriting("f9f00195-8a9a-4296-a450-77666760d624");
+//console.log("Writing complete");
+updateBooks("6c41a8e00cbe420f87c6ab588ed98933");
+console.log("Books complete");
+updateProjects("438fe6b561bc417988484bbfc5b09a7a");
