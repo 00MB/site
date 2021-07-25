@@ -17,3 +17,7 @@ jobs:
       - run: touch .env
       - run: echo NOTION_KEY =${{ secrets.NOTION_KEY }} >> .env
       - run: node script.js
+      - run: git config --global user.name '00MB'
+      - run: git config --global user.email '00MB@users.noreply.github.com'
+      - run: git commit -am "Automated report"
+      - run: git push
