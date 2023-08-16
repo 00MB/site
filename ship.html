@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h4 {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        table {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #333;
+            color: #fff;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .legend {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 14px;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .active {
+            background-color: rgba(255, 165, 0, 0.5); /* Orange with 50% opacity */
+        }
+
+        .success {
+            background-color: rgba(0, 128, 0, 0.5); /* Green with 50% opacity */
+        }
+
+        .fail {
+            background-color: rgba(255, 0, 0, 0.5); /* Red with 50% opacity */
+        }
+
+
+    </style>
+</head>
+<body>
+    <h4>Projects</h4>
+    <p>Built a bunch of projects, started documenting mid 2023</p>
+    <table>
+        <thead>
+          <tr>
+            <th>Launch At</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>-</td>
+                <td>Shorts.lol</td>
+                <td>...</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>MagicPost</td>
+                <td>Auto reply bot for posts</td>
+            </tr>
+            <tr class="active">
+                <td>2023-07-18</td>
+                <td><a href="https://aibabygenerator.com" target="_blank">AIBabyGenerator.com</a></td>
+                <td>See your future child</td>
+              </tr>
+              <tr class="active">
+                <td>2023-07-18</td>
+                <td><a href="https://selfloveletter.com" target="_blank">SelfLoveLetter.com</a></td>
+                <td>A love letter for yourself</td>
+              </tr>
+            <tr class="active">
+                <td>2023-07-16</td>
+                <td><a href="https://aimailman.com" target="_blank">AIMailman.com</a></td>
+                <td>Create emails with AI</td>
+            </tr>
+            <tr class="active">
+                <td>2023-06-29</td>
+                <td><a href="https://techtwitter.lol" target="_blank">TechTwitter.lol</a></td>
+                <td>Daily top 10 Twitter posts</td>
+            </tr>
+            <tr class="success">
+                <td>2023-05-01</td>
+                <td><a href="https://networkmagnet.app" target="_blank">networkmagnet.app</a> (Aquired)</td>
+                <td>Find meetings with anyone</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="legend">
+        <span class="color-box active"></span>Active
+        <span class="color-box success"></span>Success
+        <span class="color-box fail"></span>Fail
+    </div>
+</body>
+</html>
